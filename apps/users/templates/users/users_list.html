@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    {% load static %}
+    <!--<link rel="stylesheet" type="text/css" href="main.css"> -->
+    <link rel="stylesheet" type="text/css" href="{% static 'users/main.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h2>Users</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Created At</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for name in all_users %}
+                <tr>
+                    <td>{{ name.id }}</td>
+                    <td>{{ name.f_name }} {{ name.l_name }}</td>
+                    <td>{{ name.email }}</td>
+                    <td>{{ name.created_at }}</td>
+                    <td><a href="/users/show/{{ name.id }}">Show</a>
+                        <a href="/users/edit/{{ name.id }}">Edit</a>
+                        <a href="/users/delete/{{ name.id }}">Delete</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <a href="{% url 'users:new' %}">Add a new user</a>
+    </div>
+</body>
+</html>

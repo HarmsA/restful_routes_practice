@@ -1,0 +1,11 @@
+.container {
+    width: 80%;
+    margin: auto;
+    text-align: left;
+}
+div.form-group label {
+    text-align: right;
+}
+thead{
+    background-color: lightgrey;
+}
